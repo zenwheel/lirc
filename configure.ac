@@ -126,6 +126,7 @@ AC_MSG_RESULT()
 # (header/library) dependencies!
 possible_drivers="(none) \
 	(userspace) \
+	(arduinohttp) \
 	(accent) \
 	(atwf83) \
 	(bte) \
@@ -432,7 +433,7 @@ dnl here we see what driver the user wants.
 
 AC_ARG_WITH(driver,
 [  --with-driver=X         specify the driver to use, where X is one of:
-                          all, none, userspace, accent, act200l,
+                          all, none, userspace, arduinohttp, accent, act200l,
                           act220l, adaptec, alsa_usb, animax, asusdh,
                           atilibusb, atiusb, atwf83, audio, audio_alsa
                           avermedia, avermedia_vdomate, avermedia98,
@@ -690,6 +691,9 @@ if test "$driver" = "userspace" -o "$driver" = "all"; then
 		;;
 	tira|tira_raw)
 		hw_module="${hw_module} hw_tira.o receive.o transmit.o"
+		;;
+	arduinohttp)
+		hw_module="${hw_module} hw_arduinohttp.o transmit.o"
 		;;
 	udp)
 		hw_module="${hw_module} hw_udp.o receive.o"
@@ -1414,6 +1418,12 @@ fi
 if test "$driver" = "tvbox"; then
   lirc_driver="lirc_dev lirc_i2c"
   lircd_conf="asus/lircd.conf.asus"
+fi
+
+if test "$driver" = "arduinohttp"; then
+  lirc_driver="none"
+  hw_module="hw_arduinohttp.o transmit.o"
+  HW_DEFAULT="hw_arduinohttp"
 fi
 
 if test "$driver" = "udp"; then
