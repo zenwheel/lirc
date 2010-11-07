@@ -304,9 +304,9 @@ int setup_uinputfd(const char *name)
 	return -1;
 }
 
+#ifdef __linux__
 void write_uinput(__u16 type, __u16 code, __s32 value)
 {
-#ifdef __linux__
 	struct input_event event;
 
 	memset(&event, 0, sizeof(event));
@@ -328,8 +328,12 @@ void write_uinput(__u16 type, __u16 code, __s32 value)
 			syslog(LOG_ERR, "%m");
 		}
 	}
-#endif
 }
+#else
+void write_uinput(unsigned short type, unsigned short code, long value)
+{
+}
+#endif
 
 void msend(int dx,int dy,int dz,int rep,int buttp,int buttr)
 {
