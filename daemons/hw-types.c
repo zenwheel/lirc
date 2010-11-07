@@ -54,6 +54,7 @@ extern struct hardware hw_srm7500libusb;
 extern struct hardware hw_tira;
 extern struct hardware hw_tira_raw;
 extern struct hardware hw_udp;
+extern struct hardware hw_arduinohttp;
 extern struct hardware hw_uirt2;
 extern struct hardware hw_uirt2_raw;
 extern struct hardware hw_usb_uirt_raw;
