@@ -151,6 +151,7 @@ struct hardware *hw_list[] =
 #ifdef HAVE_LINUX_HIDDEV_H
 	&hw_macmini,
 #endif
+	&hw_arduinohttp,
 	&hw_mp3anywhere,
 	&hw_mplay,
 	&hw_mouseremote,

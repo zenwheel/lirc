@@ -21,6 +21,7 @@ AC_PATH_PROG(mkfifo, mkfifo, /usr/bin/mkfifo)
 AC_PATH_PROG(depmod, depmod, /sbin/depmod, $PATH:/sbin)
 AC_PATH_PROG(LIBUSB_CONFIG, libusb-config)
 AC_PROG_LN_S
+AC_PROG_RANLIB
 AC_PROG_LIBTOOL
 AM_PATH_PYTHON
 AM_CONDITIONAL([HAVE_PYTHON], [test "$PYTHON" != ""])
